@@ -12,17 +12,17 @@ namespace otusznje {
         public enum Memez {
             otusznje = 0,
             jeszcze_jak,
-            dość, //jp2 mówiący "dość"
-            co, //jp2 mówiący "coooo?"
+            dość, 
+            co, 
             nie_wiem,
             REEEE,
-            ph1,
-            ph2,
-            ph3,
-            ph4
+            pan_Jezus,
+            nie_wiem_choc_sie_domyslam,
+            zaklecie_korwina,
+            to_be_continued
         }
         static void Main(string[] args) {
-            System.Media.SoundPlayer benin = null;
+            SoundPlayer benin = null;
             Memez succ;
             string current = Directory.GetCurrentDirectory();
             string[] files = Directory.GetFiles(current, "*.*", SearchOption.AllDirectories);
@@ -33,7 +33,6 @@ namespace otusznje {
                 Select(dur => dur.Properties.Duration.Seconds * 1000 + dur.Properties.Duration.Milliseconds).
                 Select(val => (long)val).
                 ToArray();
-            Console.WriteLine(durations.Length.ToString());
             try {
                 succ = (Memez)Convert.ToInt32(args[0]);
             } catch (Exception) {
@@ -58,6 +57,18 @@ namespace otusznje {
                     break;
                 case Memez.REEEE:
                     benin = new SoundPlayer("Sounds/5_REEE.wav");
+                    break;
+                case Memez.pan_Jezus:
+                    benin = new SoundPlayer("Sounds/6_takjakpanJezuspowiedzial.wav");
+                    break;
+                case Memez.nie_wiem_choc_sie_domyslam:
+                    benin = new SoundPlayer("Sounds/7_niewiemchocsiedomyslam.wav");
+                    break;
+                case Memez.zaklecie_korwina:
+                    benin = new SoundPlayer("Sounds/8_zaklecie_korwina.wav");
+                    break;
+                case Memez.to_be_continued:
+                    benin = new SoundPlayer("Sounds/9_to_be_continued.wav");
                     break;
                 default:
                     return;

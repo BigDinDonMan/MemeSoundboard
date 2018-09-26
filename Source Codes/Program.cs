@@ -19,7 +19,10 @@ namespace otusznje {
             pan_Jezus,
             nie_wiem_choc_sie_domyslam,
             zaklecie_korwina,
-            to_be_continued
+            to_be_continued,
+            OOF,
+            spok_co_do_kurwy,
+            usrr_anthem
         }
         static void Main(string[] args) {
             SoundPlayer benin = null;
@@ -69,6 +72,15 @@ namespace otusznje {
                     break;
                 case Memez.to_be_continued:
                     benin = new SoundPlayer("Sounds/9_to_be_continued.wav");
+                    break;
+                case Memez.OOF:
+                    benin = new SoundPlayer("Sounds/10_OOF.wav");
+                    break;
+                case Memez.spok_co_do_kurwy:
+                    benin = new SoundPlayer("Sounds/11_spok_co_do_kurwy.wav");
+                    break;
+                case Memez.usrr_anthem:
+                    benin = new SoundPlayer("Sounds/12_usrr_anthem.wav");
                     break;
                 default:
                     return;

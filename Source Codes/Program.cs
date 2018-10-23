@@ -22,13 +22,34 @@ namespace otusznje {
             to_be_continued,
             OOF,
             spok_co_do_kurwy,
-            usrr_anthem
+            usrr_anthem,
+            maxmoefoe,
+            its_time_to_stop,
+            tak_bylo
         }
+
+        public static Dictionary<Memez, string> soundPaths = new Dictionary<Memez, string>() {
+            { Memez.otusznje,                                   "Sounds/00_otusznje.wav" },
+            { Memez.jeszcze_jak,                                "Sounds/01_jeszcze_jak.wav" },
+            { Memez.dość,                                       "Sounds/02_dość.wav" },
+            { Memez.co,                                         "Sounds/03_co.wav" },
+            { Memez.nie_wiem,                                   "Sounds/04_nie_wiem.wav" },
+            { Memez.REEEE,                                      "Sounds/05_REEE.wav" },
+            { Memez.pan_Jezus,                                  "Sounds/06_takjakpanJezuspowiedzial.wav" },
+            { Memez.nie_wiem_choc_sie_domyslam,                 "Sounds/07_niewiemchocsiedomyslam.wav" },
+            { Memez.zaklecie_korwina,                           "Sounds/08_zaklecie_korwina.wav" },
+            { Memez.to_be_continued,                            "Sounds/09_to_be_continued.wav" },
+            { Memez.OOF,                                        "Sounds/10_OOF.wav" },
+            { Memez.spok_co_do_kurwy,                           "Sounds/11_spok_co_do_kurwy.wav" },
+            { Memez.usrr_anthem,                                "Sounds/12_usrr_anthem.wav" },
+            { Memez.maxmoefoe,                                  "Sounds/13_maxmoefoe.wav" },
+            { Memez.its_time_to_stop,                           "Sounds/14_its_time_to_stop.wav" },
+            { Memez.tak_bylo,                                   "Sounds/15_tak_było.wav" }
+        };
+
         static void Main(string[] args) {
-            SoundPlayer benin = null;
             Memez succ;
-            string current = Directory.GetCurrentDirectory();
-            string[] files = Directory.GetFiles(current, "*.*", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.*", SearchOption.AllDirectories);
             files = files.Where(x => Path.GetExtension(x).ToLower() == ".wav").ToArray();
             long[] durations = null;
             durations = files.Select(file => TagLib.File.Create(file)).
@@ -41,51 +62,8 @@ namespace otusznje {
                 Console.WriteLine("Wrong meme/no memez");
                 return;
             }
-            switch (succ) {
-                case Memez.otusznje:
-                    benin = new SoundPlayer("Sounds/00_otusznje.wav");
-                    break;
-                case Memez.jeszcze_jak:
-                    benin = new SoundPlayer("Sounds/01_jeszcze_jak.wav");
-                    break;
-                case Memez.dość:
-                    benin = new SoundPlayer("Sounds/02_dość.wav");
-                    break;
-                case Memez.co:
-                    benin = new SoundPlayer("Sounds/03_co.wav");
-                    break;
-                case Memez.nie_wiem:
-                    benin = new SoundPlayer("Sounds/04_nie_wiem.wav");
-                    break;
-                case Memez.REEEE:
-                    benin = new SoundPlayer("Sounds/05_REEE.wav");
-                    break;
-                case Memez.pan_Jezus:
-                    benin = new SoundPlayer("Sounds/06_takjakpanJezuspowiedzial.wav");
-                    break;
-                case Memez.nie_wiem_choc_sie_domyslam:
-                    benin = new SoundPlayer("Sounds/07_niewiemchocsiedomyslam.wav");
-                    break;
-                case Memez.zaklecie_korwina:
-                    benin = new SoundPlayer("Sounds/08_zaklecie_korwina.wav");
-                    break;
-                case Memez.to_be_continued:
-                    benin = new SoundPlayer("Sounds/09_to_be_continued.wav");
-                    break;
-                case Memez.OOF:
-                    benin = new SoundPlayer("Sounds/10_OOF.wav");
-                    break;
-                case Memez.spok_co_do_kurwy:
-                    benin = new SoundPlayer("Sounds/11_spok_co_do_kurwy.wav");
-                    break;
-                case Memez.usrr_anthem:
-                    benin = new SoundPlayer("Sounds/12_usrr_anthem.wav");
-                    break;
-                default:
-                    return;
-            }
-            benin.Play();
-            System.Threading.Thread.Sleep((int)durations[(int)succ]);
+            (new SoundPlayer(soundPaths[succ])).Play();
+            System.Threading.Thread.Sleep((int)durations[(int)succ] + 400);
         }
     }
 }

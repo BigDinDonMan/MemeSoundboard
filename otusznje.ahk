@@ -49,3 +49,15 @@ return
 !d::
 Run ExecutablesAndLibs/dzialaj.exe 12
 return
+
+!f::
+Run ExecutablesAndLibs/dzialaj.exe 13
+return
+
+!g::
+Run ExecutablesAndLibs/dzialaj.exe 14
+return
+
+!h::
+Run ExecutablesAndLibs/dzialaj.exe 15
+return
